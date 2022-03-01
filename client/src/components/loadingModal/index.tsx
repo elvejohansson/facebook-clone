@@ -14,9 +14,7 @@ const Modal = styled.div`
 	text-align: center;
 
 	h1 {
-		color: var(--accent);
 		font-size: 5rem;
-		font-weight: 800;
 	}
 `;
 

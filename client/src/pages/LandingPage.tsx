@@ -10,9 +10,7 @@ const Main = styled.main`
 	padding: 15% 20% 0 20%;
 
 	h1 {
-		color: var(--accent);
 		font-size: 3.5rem;
-		font-weight: 800;
 	}
 
 	p {
@@ -27,6 +25,8 @@ const Footer = styled.footer`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.1);
+	background: #fff;
 
 	p {
 		font-size: 0.8rem;
@@ -40,7 +40,6 @@ const Footer = styled.footer`
 		font-weight: 500;
 	}
 `;
-
 
 const LandingPage = () => {
 	return (

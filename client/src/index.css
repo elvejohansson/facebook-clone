@@ -9,6 +9,17 @@
   box-sizing: border-box;
   font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+html {
+  font-size: 16px;
+}
+body {
+  background: var(--background);
+}
+
+h1 {
+  font-weight: 800;
+  color: var(--accent);
+}
 
 button {
   border: none;
