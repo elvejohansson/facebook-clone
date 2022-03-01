@@ -11,7 +11,7 @@ const HomePage = () => {
 			<LogoutButton />
 
 			<h2>User info</h2>
-			{JSON.stringify(user)};
+			{JSON.stringify(user, null, 2)};
 		</>
 	);
 };
