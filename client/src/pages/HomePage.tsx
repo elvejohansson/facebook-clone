@@ -1,17 +1,24 @@
 import React from "react";
+import styled from "styled-components";
 import { useAuth0 } from "@auth0/auth0-react";
+
 import LogoutButton from "../components/logoutButton";
+import Nav from "../components/nav";
+
+const Wrapper = styled.main`
+	padding: 2rem 1rem;
+`;
 
 const HomePage = () => {
 	const { user } = useAuth0();
 
 	return (
 		<>
-			<h1>Welcome to &quot;not-facebook&quot;</h1>
-			<LogoutButton />
+			<Nav />
 
-			<h2>User info</h2>
-			{JSON.stringify(user, null, 2)};
+			<Wrapper>
+				<LogoutButton />
+			</Wrapper>
 		</>
 	);
 };
