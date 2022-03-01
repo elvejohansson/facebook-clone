@@ -1,0 +1,17 @@
+{
+  "name": "facebook-clone",
+  "version": "0.0.0",
+  "author": "Elve Johansson <elve2002@live.se>",
+  "license": "MIT",
+  "repository": "https://github.com/elvejohansson/facebook-clone",
+  "scripts": {
+    "start": "yarn --cwd server start | tee logs/server.log & yarn --cwd client start | tee logs/client.log",
+    "dev": "echo \"Error: Not implemented!\" && exit 1",
+    "test": "echo \"Error: Not implemented!\" && exit 1",
+    "build": "echo \"Error: Not implemented!\" && exit 1",
+    "server": "yarn --cwd server start",
+    "client": "yarn --cwd client start",
+    "client-build": "yarn --cwd client build",
+    "client-test": "yarn --cwd client test"
+  }
+}
