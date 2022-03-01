@@ -20,7 +20,6 @@ h1 {
   font-weight: 800;
   color: var(--accent);
 }
-
 button {
   border: none;
   outline: none;
@@ -30,5 +29,9 @@ button {
   color: #fff;
   padding: 1rem 4rem;
   border-radius: 5px;
+  cursor: pointer;
+}
+.link {
+  text-decoration: none;
   cursor: pointer;
 }

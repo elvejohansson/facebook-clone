@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Navbar = styled.nav`
@@ -17,7 +18,9 @@ const Navbar = styled.nav`
 const Nav = () => {
 	return (
 		<Navbar>
-			<h1>!Facebook</h1>
+			<Link className="link" to="/">
+				<h1>!Facebook</h1>	
+			</Link>
 		</Navbar>
 	);
 };
