@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 
 import { PORT } from "./config/server.config";
 import { sequelize } from "./sequelize";
@@ -43,6 +44,10 @@ class App {
 	private initializeMiddlewares() {
 		this.app.use(express.json());
 		this.app.use(express.urlencoded({ extended: true }));
+		this.app.use(cors({
+			origin: "https://localhost",
+			optionsSuccessStatus: 200
+		}));
 	}
 
 	private initializeRoutes() {
