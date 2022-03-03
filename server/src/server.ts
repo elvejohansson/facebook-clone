@@ -19,16 +19,29 @@ class App {
 		this.initializeRoutes();
 	}
 
+
+	/**
+	 * Getter method for accessing the express server instance.
+	 * @returns `express.Application` instance.
+	 */
 	public getServer() {
 		return this.app;
 	}
 
+
+	/**
+	 * Function for starting 
+	 */
 	public listen() {
 		this.app.listen(this.port, () => {
 			console.log(`[server]: Server is running at http://localhost:${this.port}`);
 		});
 	}
 
+
+	/**
+	 * Method for initializing the connection to the Postgres database.
+	 */
 	private async initializeDatabaseConnection() {
 		try {
 			await sequelize.authenticate();
@@ -41,6 +54,10 @@ class App {
 		}
 	}
 
+
+	/**
+	 * Method for initializing all the different middleware the server requires.
+	 */
 	private initializeMiddlewares() {
 		this.app.use(express.json());
 		this.app.use(express.urlencoded({ extended: true }));
@@ -50,6 +67,10 @@ class App {
 		}));
 	}
 
+
+	/**
+	 * Method for initializing all the routes used by the API.
+	 */
 	private initializeRoutes() {
 		this.app.get("/", (req, res) => {
 			res.sendStatus(418);
@@ -83,6 +104,10 @@ class App {
 		}
 	}
 
+
+	/**
+	 * Wrapper method for handling async errors not being transmitted correctly.
+	 */
 	private handleAsyncError(handler: any) {
 		return async function(req: express.Request, res: express.Response, next: express.NextFunction) {
 			try {
