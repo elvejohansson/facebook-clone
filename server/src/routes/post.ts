@@ -1,10 +1,11 @@
 import { Request, Response } from "express";
-import { getAllPosts, getPostById, createPost } from "../controllers/post.controller";
+import { getAllPosts, getPostById, createPost, removePost } from "../controllers/post.controller";
 
 export {
 	getAll,
 	getById,
-	create
+	create,
+	remove
 };
 
 async function getAll(req: Request, res: Response) {
@@ -29,4 +30,12 @@ async function create(req: Request, res: Response) {
 		await createPost(req.body);
 		res.status(201).end();
 	}
+}
+
+async function remove(req: Request, res: Response) {
+	const id = req.params.id;
+
+	await removePost(id);
+
+	res.status(200).end();
 }

@@ -74,6 +74,12 @@ class App {
 					this.handleAsyncError(routeController.create)
 				);
 			}
+			if (routeController.remove) {
+				this.app.delete(
+					`/api/${routeName}/:id`,
+					this.handleAsyncError(routeController.remove)
+				);
+			}
 		}
 	}
 

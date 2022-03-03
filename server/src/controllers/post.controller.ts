@@ -4,7 +4,8 @@ import { sequelize } from "../sequelize";
 export {
 	getAllPosts,
 	getPostById,
-	createPost
+	createPost,
+	removePost
 };
 
 const getAllPosts = async () => {
@@ -25,5 +26,13 @@ const createPost = async (data: any) => {
 		author_name: data.author_name,
 		created_at: data.created_at,
 		author_img: data.author_img
+	});
+};
+
+const removePost = async (id: string) => {
+	await sequelize.models.Post.destroy({
+		where: {
+			id: id
+		}
 	});
 };

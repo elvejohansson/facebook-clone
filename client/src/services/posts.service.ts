@@ -2,7 +2,8 @@ import axios from "axios";
 
 export {
 	GetAll,
-	Create
+	Create,
+	Delete
 };
 
 async function GetAll() {
@@ -22,4 +23,13 @@ async function Create(content: string, user: any) {
 		})
 		.then(res => console.log(res))
 		.catch(err => console.error(err));
+}
+async function Delete(id: string, author_id: string, user: any) {
+	if (author_id !== user.sub.split("|")[1])
+		console.log("wrong user id");
+
+	return await axios
+		.delete(`http://localhost:3000/api/posts/${id}`)
+		.catch((err) => console.error(err));
+		
 }

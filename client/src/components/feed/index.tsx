@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import styled from "styled-components";
 
-import { GetAll } from "../../services/posts.service";
+import { Delete, GetAll } from "../../services/posts.service";
 
 const Wrapper = styled.div`
 	
@@ -10,7 +11,7 @@ const Post = styled.div`
 	background: #fff;
 	border-radius 0.5rem;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	margin: 1.5rem 0;
+	margin: 1.75rem 0;
 	width: 600px;
 	padding: 1rem;
 
@@ -42,10 +43,26 @@ const Post = styled.div`
 	p {
 		font-size: 1rem;
 		font-weight: 400;
+		line-height: 1.4rem;
+	}
+
+	hr {
+		margin: 1rem 0;
+		outline: none;
+		border: none;
+		height: 1px;
+		background: rgba(0, 0, 0, 0.2);
+	}
+
+	h3 {
+		font-size: 0.8rem;
+		font-weight: 500;
+		color: var(--accent);
 	}
 `;
 
 const Feed = () => {
+	const { user } = useAuth0();
 	const [ data, setData ] = useState([] as Array<object>);
 
 	useEffect(() => {
@@ -61,6 +78,11 @@ const Feed = () => {
 		setData(response);
 	}
 
+	async function handleDelete(post: any) {		
+		Delete(post.id, post.author_id, user);
+		window.location.reload();
+	}
+
 	return (
 		<Wrapper>
 			{data !== undefined
@@ -74,6 +96,11 @@ const Feed = () => {
 							</div>
 						</div>
 						<p>{element.content}</p>
+						<hr />
+						{element.author_id === user?.sub?.split("|")[1]
+							? <h3 onClick={() => handleDelete(element)}>Delete post</h3>
+							: <></>
+						}
 					</Post>
 				)
 				: <h4>No data</h4>
