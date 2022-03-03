@@ -68,6 +68,12 @@ class App {
 					this.handleAsyncError(routeController.getById)
 				);
 			}
+			if (routeController.create) {
+				this.app.post(
+					`/api/${routeName}`,
+					this.handleAsyncError(routeController.create)
+				);
+			}
 		}
 	}
 

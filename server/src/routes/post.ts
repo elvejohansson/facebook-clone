@@ -1,22 +1,32 @@
 import { Request, Response } from "express";
-import { getAllPosts, getPostById } from "../controllers/post.controller";
+import { getAllPosts, getPostById, createPost } from "../controllers/post.controller";
 
 export {
 	getAll,
-	getById
+	getById,
+	create
 };
 
 async function getAll(req: Request, res: Response) {
-	const users = await getAllPosts();
+	const posts = await getAllPosts();
 	
-	res.status(200).json(users);
+	res.status(200).json(posts);
 }
 
 async function getById(req: Request, res: Response) {
-	const user = await getPostById(req.params.id);
+	const post = await getPostById(req.params.id);
 
-	if (!user)
+	if (!post)
 		res.status(404).send("Resource Not Found!");
 
-	res.status(200).json(user);
+	res.status(200).json(post);
+}
+
+async function create(req: Request, res: Response) {
+	if (req.body.id) {
+		res.status(400).send("Bad request: ID should not be provided, since it is determined automatically by the database!");
+	} else {
+		await createPost(req.body);
+		res.status(201).end();
+	}
 }
