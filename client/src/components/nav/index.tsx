@@ -9,6 +9,8 @@ const Navbar = styled.nav`
 	box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.1);
 	display: flex;
 	justify-content: space-between;
+	position: sticky;
+	top: 0;
 
 	h1 {
 		font-size: 1.3rem;

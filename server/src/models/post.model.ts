@@ -18,6 +18,10 @@ module.exports = (sequelize: Sequelize ) => {
 		author_name: {
 			type: DataTypes.STRING(100),
 			allowNull: false
+		},
+		created_at: {
+			type: DataTypes.TIME,
+			allowNull: false
 		}
 	}, {
 		modelName: "Post",
