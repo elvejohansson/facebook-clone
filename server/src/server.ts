@@ -25,7 +25,7 @@ class App {
 
 	public listen() {
 		this.app.listen(this.port, () => {
-			console.log(`[server]: Server is running at https://localhost:${this.port}`);
+			console.log(`[server]: Server is running at http://localhost:${this.port}`);
 		});
 	}
 
@@ -45,7 +45,7 @@ class App {
 		this.app.use(express.json());
 		this.app.use(express.urlencoded({ extended: true }));
 		this.app.use(cors({
-			origin: "https://localhost",
+			origin: "http://localhost",
 			optionsSuccessStatus: 200
 		}));
 	}
