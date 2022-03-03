@@ -10,7 +10,6 @@ export {
 
 async function getAll(req: Request, res: Response) {
 	const posts = await getAllPosts();
-	
 	res.status(200).json(posts);
 }
 
@@ -33,9 +32,7 @@ async function create(req: Request, res: Response) {
 }
 
 async function remove(req: Request, res: Response) {
-	const id = req.params.id;
-
-	await removePost(id);
+	await removePost(req.params.id);
 
 	res.status(200).end();
 }

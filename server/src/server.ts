@@ -30,7 +30,7 @@ class App {
 
 
 	/**
-	 * Function for starting 
+	 * Method that makes the express server listen on the specified port.
 	 */
 	public listen() {
 		this.app.listen(this.port, () => {
