@@ -22,6 +22,10 @@ module.exports = (sequelize: Sequelize ) => {
 		created_at: {
 			type: DataTypes.TIME,
 			allowNull: false
+		},
+		author_img: {
+			type: DataTypes.STRING(255),
+			allowNull: false
 		}
 	}, {
 		modelName: "Post",

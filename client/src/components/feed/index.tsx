@@ -17,6 +17,9 @@ const Post = styled.div`
 	.top {
 		margin-bottom: 1.5rem;
 	}
+	.top div {
+		display: inline-block;
+	}
 
 	h1 {
 		font-size: 0.95rem;
@@ -29,6 +32,13 @@ const Post = styled.div`
 		font-weight: 600;
 		color: rgba(0, 0, 0, 0.5);
 	}
+	img {
+		border-radius: 100%;
+		display: inline-block;
+		height: 32px;
+		margin-right: 0.5rem;
+	}
+
 	p {
 		font-size: 1rem;
 		font-weight: 400;
@@ -57,8 +67,11 @@ const Feed = () => {
 				? data.map((element: any) =>
 					<Post key={element.id}>
 						<div className="top">
-							<h1>{element.author_name}</h1>
-							<h2>{new Date(element.created_at).toLocaleString()}</h2>
+							<img src={element.author_img} />
+							<div>
+								<h1>{element.author_name}</h1>
+								<h2>{new Date(element.created_at).toDateString()}, {new Date(element.created_at).getHours()}:{new Date(element.created_at).getMinutes()}</h2>
+							</div>
 						</div>
 						<p>{element.content}</p>
 					</Post>
