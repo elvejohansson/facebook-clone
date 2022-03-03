@@ -14,6 +14,10 @@ module.exports = (sequelize: Sequelize ) => {
 		author_id: {
 			type: DataTypes.STRING(25),
 			allowNull: false
+		},
+		author_name: {
+			type: DataTypes.STRING(100),
+			allowNull: false
 		}
 	}, {
 		modelName: "Post",
