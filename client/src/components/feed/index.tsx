@@ -71,10 +71,15 @@ const Feed = () => {
 	
 	async function retrieveData() {
 		const response: Array<object> = await GetAll()
-			.then(res => res);
-		response.sort((x: any, y: any) => {
-			return new Date(y.created_at).valueOf() - new Date(x.created_at).valueOf();
-		});
+			.then(res => res)
+			.catch(err => console.error(err));
+
+		if (response !== undefined) {
+			response.sort((x: any, y: any) => {
+				return new Date(y.created_at).valueOf() - new Date(x.created_at).valueOf();
+			});
+		}
+		
 		setData(response);
 	}
 
