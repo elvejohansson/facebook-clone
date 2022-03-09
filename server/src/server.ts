@@ -62,7 +62,7 @@ class App {
 		this.app.use(express.json());
 		this.app.use(express.urlencoded({ extended: true }));
 		this.app.use(cors({
-			origin: "http://localhost",
+			origin: "http://localhost:3000",
 			optionsSuccessStatus: 200
 		}));
 	}

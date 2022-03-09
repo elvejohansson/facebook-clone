@@ -6,15 +6,21 @@ export {
 	Delete
 };
 
+
+let PORT = process.env.REACT_APP_SERVER_PORT;
+if (process.env.NODE_ENV === "development")
+	PORT = "3000";
+
+
 async function GetAll() {
 	return await axios
-		.get("http://localhost:3000/api/posts")
+		.get(`http://localhost:${PORT}/api/posts`)
 		.then(res => res.data)
 		.catch(err => console.error(err));
 }
 async function Create(content: string, user: any) {
 	return await axios
-		.post("http://localhost:3000/api/posts", {
+		.post(`http://localhost:${PORT}/api/posts`, {
 			"content": content,
 			"author_id": user.sub.split("|")[1],
 			"author_name": user.name,
@@ -25,11 +31,13 @@ async function Create(content: string, user: any) {
 		.catch(err => console.error(err));
 }
 async function Delete(id: string, author_id: string, user: any) {
-	if (author_id !== user.sub.split("|")[1])
-		console.log("wrong user id");
+	if (author_id !== user.sub.split("|")[1]) {
+		console.error("Wrong user ID, aborting request!");
+		return;
+	}
 
 	return await axios
-		.delete(`http://localhost:3000/api/posts/${id}`)
+		.delete(`http://localhost:${PORT}/api/posts/${id}`)
 		.catch((err) => console.error(err));
 		
 }
