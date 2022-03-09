@@ -42,7 +42,6 @@ const MessagePoster = () => {
 	function handleSubmit(e: React.FormEvent<EventTarget>) {
 		e.preventDefault();
 		Create(message, user);
-		window.location.reload();
 	}
 
 	return (

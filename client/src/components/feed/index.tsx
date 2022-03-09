@@ -75,7 +75,7 @@ const Feed = () => {
 			.catch(err => console.error(err));
 
 		if (response !== undefined) {
-			[].slice.call(response).sort((x: any, y: any) => {
+			response.sort((x: any, y: any) => {
 				return new Date(y.created_at).valueOf() - new Date(x.created_at).valueOf();
 			});
 		}
@@ -85,13 +85,12 @@ const Feed = () => {
 
 	async function handleDelete(post: any) {		
 		Delete(post.id, post.author_id, user);
-		window.location.reload();
 	}
 
 	return (
 		<Wrapper>
 			{data !== undefined
-				? [].slice.call(data).map((element: any) =>
+				? data.map((element: any) =>
 					<Post key={element.id}>
 						<div className="top">
 							<img src={element.author_img} />
