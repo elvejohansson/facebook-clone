@@ -6,10 +6,11 @@
   "repository": "https://github.com/elvejohansson/facebook-clone",
   "scripts": {
     "start": "yarn --cwd server start | tee logs/server.log & yarn --cwd client start | tee logs/client.log",
-    "dev": "echo \"Error: Not implemented!\" && exit 1",
+    "dev": "yarn --cwd server dev | tee logs/server.log & yarn -cwd client start | tee logs/client.log",
     "test": "echo \"Error: Not implemented!\" && exit 1",
     "build": "echo \"Error: Not implemented!\" && exit 1",
     "server": "yarn --cwd server start",
+    "server-build": "yarn --cwd server build",
     "client": "yarn --cwd client start",
     "client-build": "yarn --cwd client build",
     "client-test": "yarn --cwd client test"
